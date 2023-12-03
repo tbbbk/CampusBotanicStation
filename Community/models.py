@@ -28,7 +28,7 @@ class ArticlePost(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('article:article_detail', args=[self.id])
+        return reverse('community:article_detail', args=[self.id])
 
 
 # 博文的评论

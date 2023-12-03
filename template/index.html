@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>川大校园植物站</title>
@@ -8,55 +9,60 @@
     <link rel="stylesheet" href="/static/css/css.css">
     <link rel="stylesheet" href="/static/font/iconfont.css">
 </head>
+
 <body>
-<!--导航栏-->
-<nav>
-    <ul class="menu">
-        <li><a href="{% url 'index' %}">首页</a></li>
-        <li><a href="html/图鉴.html">植物图鉴</a></li>
-        <li>
-            <a href="html/互助.html">交流互助</a>
-            
-        </li>
-        <li><a href="{% url 'community:logout' %}">退出登录</a></li>
-    </ul>
-</nav>
-<!--轮播图部分-->
-<section>
-    <ul>
-        <li><img src="/static/images/p1.jpg" alt=""></li>
-        <li><img src="/static/images/p2.jpg" alt=""></li>
-        <li><img src="/static/images/p3.jpg" alt=""></li>
-        <li><img src="/static/images/p4.jpg" alt=""></li>
-        <li><img src="/static/images/p5.jpg" alt=""></li>
-        <li><img src="/static/images/p6.jpg" alt=""></li>
-    </ul>
-</section>
-<!--内容部分-->
-<main>
-    <div class="top">
-        <ul>
+    <!--导航栏-->
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">首页</a></li>
+            <li><a href="html/图鉴.html">植物图鉴</a></li>
             <li>
-                <span class="iconfont icon-dongman1"></span>
-                <h4>川大校园植物站</h4>
+                <a href="{% url 'community:article_list' %}">交流互助</a>
             </li>
+            <li><a href="{% url 'community:logout' %}">退出登录</a></li>
         </ul>
-    </div>
-   
-    <div class="last">
-        <h4>精彩推荐</h4>
+    </nav>
+    <!--轮播图部分-->
+    <section>
         <ul>
-            <li><a href="html/lhy.html" title="蓝花楹" target="_blank"><img src="/static/images/1.jpg" alt=""></a></li>
-            <li><a href="html/ht.html" title="海棠" target="_blank"><img src="/static/images/2.jpg" alt=""></a></li>
-            <li><a href="html/hh.html" title="荷花" target="_blank"><img src="/static/images/4.jpg" alt=""></a></li>
-            <li><a href="html/yx.html" title="银杏" target="_blank"><img src="/static/images/3.jpg" alt=""></a></li>
+            <li><img src="/static/images/p1.jpg" alt=""></li>
+            <li><img src="/static/images/p2.jpg" alt=""></li>
+            <li><img src="/static/images/p3.jpg" alt=""></li>
+            <li><img src="/static/images/p4.jpg" alt=""></li>
+            <li><img src="/static/images/p5.jpg" alt=""></li>
+            <li><img src="/static/images/p6.jpg" alt=""></li>
         </ul>
-    </div>
-</main>
-<footer>
-    <p>川大校园植物站&copy;第一组</p>
-</footer>
-<script src="/static/js/js03.js"></script>
-<script src="/static/js/js01.js"></script>
+    </section>
+    <!--内容部分-->
+    <main>
+        <div class="top">
+            <ul>
+                <li>
+                    <span class="iconfont icon-dongman1"></span>
+                    <h4>川大校园植物站</h4>
+                </li>
+            </ul>
+        </div>
+
+        <div class="last">
+            <h4>精彩推荐</h4>
+            <ul>
+                <li><a href="{% url 'plant:plant_detail' '测试植物' %}" title="蓝花楹" target="_blank"><img
+                            src="/static/images/1.jpg" alt=""></a></li>
+                <li><a href="{% url 'plant:plant_detail' '测试植物' %}" title="海棠" target="_blank"><img
+                            src="/static/images/2.jpg" alt=""></a></li>
+                <li><a href="{% url 'plant:plant_detail' '测试植物' %}" title="荷花" target="_blank"><img
+                            src="/static/images/4.jpg" alt=""></a></li>
+                <li><a href="{% url 'plant:plant_detail' '测试植物' %}" title="银杏" target="_blank"><img
+                            src="/static/images/3.jpg" alt=""></a></li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>川大校园植物站&copy;第一组</p>
+    </footer>
+    <script src="/static/js/js03.js"></script>
+    <script src="/static/js/js01.js"></script>
 </body>
+
 </html>

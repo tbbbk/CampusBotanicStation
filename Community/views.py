@@ -26,12 +26,12 @@ def article_list(request):
     for article in articles:
         article.body = markdown.markdown(article.body,
         extensions=[
-        # 包含 缩写、表格等常用扩展
-        'markdown.extensions.extra',
-        # 语法高亮扩展
-        'markdown.extensions.codehilite',
-        # 目录扩展
-        'markdown.extensions.toc',
+            # 包含 缩写、表格等常用扩展
+            'markdown.extensions.extra',
+            # 语法高亮扩展
+            'markdown.extensions.codehilite',
+            # 目录扩展
+            'markdown.extensions.toc',
         ])
     # 需要传递给模板（templates）的对象
     context = { 'articles': articles, 'search': search }
@@ -45,9 +45,9 @@ def article_detail(request, id):
     article = ArticlePost.objects.get(id=id)
     md = markdown.Markdown(
         extensions=[
-        'markdown.extensions.extra',
-        'markdown.extensions.codehilite',
-        'markdown.extensions.toc',
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+            'markdown.extensions.toc',
         ]
     )
     comments = Comment.objects.filter(article=id)
@@ -70,7 +70,7 @@ def article_create(request):
             new_article.author = request.user
             new_article.save()
             # 完成后返回到文章列表
-            return redirect("article:article_list")
+            return redirect("community:article_list")
         # 如果数据不合法，返回错误信息
         else:
             return HttpResponse("表单内容有误，请重新填写。")
@@ -90,7 +90,7 @@ def article_delete(request, id):
     # 调用.delete()方法删除文章
     article.delete()
     # 完成删除后返回文章列表
-    return redirect("article:article_list")
+    return redirect("community:article_list")
 
 
 @login_required
@@ -111,7 +111,7 @@ def article_update(request, id):
             article.body = request.POST['body']
             article.save()
             # 完成后返回到修改后的文章中。需传入文章的 id 值
-            return redirect("article:article_detail", id=id)
+            return redirect("community:article_detail", id=id)
         # 如果数据不合法，返回错误信息
         else:
             return HttpResponse("表单内容有误，请重新填写。")

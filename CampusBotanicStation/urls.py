@@ -22,4 +22,5 @@ urlpatterns = [
     path("", views.index),
     path("index/", views.index, name='index'),
     path('community/', include('Community.urls', namespace='community')),
+    path('plant/', include('plant.urls', namespace='plant')),
 ]
