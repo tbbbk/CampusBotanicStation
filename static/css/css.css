@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #d2f8fd;
+}
+ol,ul,li{
+    /*列表标签清除样式*/
+    list-style-type: none;
+}
+.current{
+    color: #024855;
+}
+a{
+    /*a连接设置样式*/
+    font-size: 1.1em;
+    font-weight: bold;
+    color: rgb(53, 144, 172);
+    text-decoration: none;
+    transition: transform 2s ease;
+}
+nav{
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    background: white;
+}
+nav>ul>li>a:hover{
+    color: #024855;
+}
+
+nav>ul{
+    width: 800px;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+nav>ul>li{
+    height: 50px;
+    z-index: 1  ;
+}
+nav>ul>li:nth-child(3){
+
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: rgb(53, 144, 172);
+    cursor: pointer;
+}
+nav>ul>li:nth-child(3):hover{
+    color: #024855;
+}
+
+/* nowTime */
+.nowTime{
+    text-align: center;
+    position: fixed;
+    left: 50px;
+    top: 50%;
+    width: 200px;
+    height: 100px;
+    margin-top: -50px;
+}
+.nowTime>p,.nowTime>h2{
+    color: #024855;
+}
+.nowTime>p{
+    margin-top: 50px;
+    font-size: 40px;
+    font-weight: bold;
+}
+/* changeBack */
+.changeBack{
+    text-align: center;
+    position: fixed;
+    right: 50px;
+    top: 50%;
+    width: 100px;
+    height: 400px;
+    border: 2px solid #ccc;
+    margin-top: -150px;
+}
+.changeBack>div{
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 70px;
+    height: 70px;
+    background-color: slategray;
+}
+.changeBack>div:nth-child(3){
+    background-color: cornsilk;
+}
+.changeBack>div:nth-child(4){
+    background-color: lightblue;
+}
+.changeBack>div:nth-child(5){
+    background-color: thistle;
+}
+.changeBack>h3{
+    margin-top: 15px;
+    color: #024855;
+}
+/*footer*/
+footer{
+    height: 50px;
+    width: 100%;
+    background: white;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    background-color: #f5f5f5; /* 设置 footer 的背景色 */
+}
+footer>img{
+    width: 300px;
+    height: 50px;
+}
+footer>p{
+    width: 300px;
+    color: rgb(53, 144, 172);
+    text-align: center;
+}
+footer>div{
+    width: 300px;
+    color: rgb(53, 144, 172);
+    text-align: center;
+}
+/* css00.css */

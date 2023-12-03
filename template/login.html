@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('{% static "images/p1.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Use rgba for a semi-transparent white background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #59c2c5;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .toggle-form {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="login-form">
+        <form method="post" action="">
+            {% csrf_token %}
+            <h2>Login</h2>
+            {% if error %}
+            <p style="color: red;">{{ error }}</p>
+            {% endif %}
+            <input type="text" placeholder="Username" id="login-username" name="username" required>
+            <input type="password" placeholder="Password" id="login-password" name="password" required>
+            <button type="submit">Login</button>
+            <p class="toggle-form" onclick="toggleForm('register')">Don't have an account? Register here.</p>
+            <input type="hidden" id="some-boolean-value" name="loginORregister" value="login">
+        </form>
+    </div>
+
+    <div id="register-form" style="display: none;">
+        <form method="post" action="">
+            {% csrf_token %}
+            <h2>Register</h2>
+            {% if error %}
+            <p style="color: red;">{{ error }}</p>
+            {% endif %}
+            <input type="text" placeholder="Username" id="register-username" name="username" required>
+            <input type="text" placeholder="Email" id="register-email" name="email" required>
+            <input type="password" placeholder="Password" id="register-password" name="password" required>
+            <button type="submit">Register</button>
+            <p class="toggle-form" onclick="toggleForm('login')">Already have an account? Login here.</p>
+            <input type="hidden" id="some-boolean-value" name="loginORregister" value="register">
+        </form>
+    </div>
+
+    <script>
+        function toggleForm(formType) {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+
+            if (formType === 'register') {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+            } else {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

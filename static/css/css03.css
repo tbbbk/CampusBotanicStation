@@ -1,0 +1,78 @@
+.img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img > img {
+    width: 40%;
+    height: auto;
+    /* 保持图片水平居中 */
+    margin: 0 auto;
+    display: block; /* 去除默认行内元素的间距 */
+}
+
+main {
+    width: 1280px;
+    display: flex;
+    justify-content: center; /* Center the main container horizontally */
+    margin: 30px auto;
+}
+
+main > .left {
+    width: 80%;
+    background: white;
+    /* Center the left area horizontally */
+    margin: 0 auto;
+}
+
+main > .left > h3 {
+    border-left: solid 3px #2cc3dc;
+    color: #353535;
+    text-indent: 1em;
+    cursor: default;
+    margin: 20px auto;
+    font-size: 24px;
+}
+
+main > .left > .main {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+main > .left > .main > .ll {
+    width: 25%;
+    margin: 0 20px;
+}
+
+main > .left > .main > .ll > img {
+    width: 100%;
+}
+
+main > .left > .main > .lr {
+    width: 70%;
+}
+
+main > .left > .main > .lr > img {
+    width: 100%;
+}
+
+main > .left > .main > .lr > p,
+main > .left > .main > .lr > p > strong {
+    width: 100%;
+    line-height: 23px;
+    margin: 25px auto;
+    font-family: "楷体";
+    color: #333333;
+    text-indent: 2em;
+}
+
+main > .left > .main > .lr > p > strong {
+    color: #3590AC;
+    font-size: 25px;
+}
+
+

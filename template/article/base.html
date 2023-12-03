@@ -1,0 +1,36 @@
+<!-- 
+    载入静态文件
+    使用 Django 3 学习的读者改为 {% load static %}
+-->
+{% load static %}
+
+<!DOCTYPE html>
+<!-- 网站主语言 -->
+<html lang="zh-cn">
+
+<head>
+    <!-- 网站采用的字符编码 -->
+    <meta charset="utf-8">
+    <!-- 预留网站标题的位置 -->
+    <title>{% block title %}{% endblock %}</title>
+    <!-- 引入bootstrap的css文件 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- 引入导航栏 -->
+    {% include 'article/header.html' %}
+    <!-- 预留具体页面的位置 -->
+    {% block content %}{% endblock content %}
+    <!-- 引入注脚 -->
+    {% include 'article/footer.html' %}
+    <!-- 引入 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- 引入 Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- 引入 Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

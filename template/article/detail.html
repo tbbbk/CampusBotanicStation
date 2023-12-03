@@ -1,0 +1,83 @@
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% extends "article/base.html" %}
+{% load static %}
+
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+文章详情
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+
+<!-- 文章详情 -->
+<div class="container">
+    <div class="row">
+        <!-- 标题及作者 -->
+        <h1 class="col-12 mt-4 mb-4">{{ article.title }}</h1>
+        <div class="col-12 alert alert-success">
+            作者：{{ article.author }}
+            {% if user == article.author %}
+            <hr><a href="{% url 'community:article_delete' article.id %}">删除文章</a>
+            <hr><a href="{% url 'community:article_update' article.id %}">编辑文章</a>
+            {% endif %}
+            <hr>
+            <div>
+                浏览量：{{ article.total_views }}
+            </div>
+        </div>
+        <div class="col-9">
+            <!-- 文章正文 -->
+            <div class="col-12">
+                <p>{{ article.body|safe }}</p>
+            </div>
+            <hr>
+            <!-- 显示评论 -->
+            <h4>共有{{ comments.count }}条评论</h4>
+            <div>
+                {% for comment in comments %}
+                <hr>
+                <p>
+                    <strong style="color: pink">
+                        {{ comment.user }}
+                    </strong> 于
+                    <span style="color: green">
+                        {{ comment.created|date:"Y-m-d H:i:s" }}
+                    </span> 时说：
+                </p>
+                <pre style="font-family: inherit; font-size: 1em;">
+{{ comment.body }}</pre>
+                {% endfor %}
+            </div>
+            {% if user.is_authenticated %}
+            <div>
+                <form action="{% url 'community:post_comment' article.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="body">
+                            <strong>
+                                我也要发言：
+                            </strong>
+                        </label>
+                        <textarea type="text" class="form-control" id="body" name="body" rows="2"></textarea>
+                    </div>
+                    <!-- 提交按钮 -->
+                    <button type="submit" class="btn btn-primary ">发送</button>
+                </form>
+            </div>
+            <br>
+            {% endif %}
+        </div>
+        <!-- 新增的目录 -->
+        <div class="col-3 mt-4">
+            <h4><strong>目录</strong></h4>
+            <hr>
+            <div>
+                {{ toc|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

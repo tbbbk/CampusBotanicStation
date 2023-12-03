@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "897080",
+      "name": "动漫",
+      "font_class": "dongman",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "4021753",
+      "name": "动漫",
+      "font_class": "dongman1",
+      "unicode": "e504",
+      "unicode_decimal": 58628
+    },
+    {
+      "icon_id": "12379209",
+      "name": "动漫",
+      "font_class": "dongman2",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    }
+  ]
+}

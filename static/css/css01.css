@@ -1,0 +1,275 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #d2f8fd;
+}
+ol,ul,li{
+    list-style-type: none;
+}
+a{
+    font-size: 1.1em;
+    font-weight: bold;
+    color: rgb(53, 144, 172);
+    text-decoration: none;
+}
+nav{
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    background: white;
+}
+
+nav>ul{
+    width: 800px;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+nav>ul>li{
+    height: 50px;
+    z-index: 1  ;
+}
+nav>ul>li:nth-child(3){
+
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: rgb(53, 144, 172);
+    cursor: pointer;
+}
+nav>ul>li:nth-child(3)>.hidden{
+    /*设置二级菜单的基本样式*/
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    background: rgba(255, 255, 255, 0.3);
+}
+nav>ul>li:nth-child(3)>.hidden>li{
+    height: 45px;
+}
+nav>ul>li:nth-child(3):hover>.hidden{
+    height: 270px;
+}
+nav>ul>li:nth-child(3)>ul>li:hover{
+    background: rgba(0,0,0,0.75);
+}
+
+/*轮播图样式部分*/
+section{
+    /*轮播图盒子设置宽高*/
+    width: 1300px;
+    height: 400px;
+    /*居中*/
+    margin: 0 auto;
+}
+section>ul{
+    /*设置轮播图图片集盒子的宽高以及相对定位*/
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective:4000px;
+}
+section>ul>li{
+    /*设置单个图片盒子的宽高*/
+    width: 600px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -300px;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    cursor: pointer;
+}
+section>ul>li>img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*mian*/
+main{
+    width: 1300px;
+    margin: 0 auto;
+    background: #f2f2f2;
+}
+/*top*/
+main>.top{
+    width: 80%;
+    margin: 0 auto;
+    height: 250px;
+}
+main>.top>ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: -25px;
+}
+main>.top>ul>li{
+    width: 300%;
+    height: 100%;
+    background: #fdfdfd;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+main>.top>ul>li>span{
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    color: #27b3c6;
+}
+main>.top>ul>li>h4{
+    color: #8c7e82;
+    cursor: default;
+    font-size: 40px;
+}
+main>.top>ul>li>p{
+    height: 40%;
+    width: 80%;
+    text-align: center;
+    color: #bfbfbf;
+    cursor: default;
+}
+/*second*/
+main>.second{
+    width: 80%;
+    height: 550px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+main>.second>h4{
+    border-left: solid 10px #2cc3dc;
+    color: #353535;
+    text-indent: 1em;
+    cursor: default;
+    font-size: 24px;
+}
+main>.second>div{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+}
+main>.second>div>img{
+    width:25%;
+    height: 100%;
+}
+main>.second>div>div{
+    width: 75%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+main>.second>div>div>ul{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #d2f8fd;
+}
+main>.second>div>div>ul>li{
+    height: 25%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 30px;
+    /*border: 3px dashed #2cc3dc;*/
+    /*margin-right: 30px;*/
+    /*border-radius: 20px;*/
+}
+main>.second>div>div>ul>li>p{
+    /*text-indent: 2em;*/
+    color: black;
+    font-size: 20px;
+    /*margin-bottom: 10px;*/
+    /*font-weight: bold;*/
+    font-style: italic;
+    cursor: default;
+}
+main>.second>div>div>ul>li>h4{
+    color: #534f4f;
+    text-align: right;
+    cursor: default;
+}
+/*last*/
+main>.last{
+    width: 1300px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+main>.last>h4{
+    width: 80%;
+    border-left: solid 10px #2cc3dc;
+    color: #353535;
+    text-indent: 1em;
+    cursor: default;
+    margin: 0 auto;
+    font-size: 24px;
+}
+main>.last>ul{
+    width: 80%;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+main>.last>ul>li{
+    width: 250px;
+    height: 250px;
+}
+main>.last>ul>li>a>img{
+    width: 100%;
+    height: 100%;
+}
+main>.last>ul>li>a>img:hover{
+    opacity: 0.6;
+}
+/*footer*/
+footer{
+    height: 50px;
+    width: 100%;
+    background: white;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    background-color: #f5f5f5; /* 设置 footer 的背景色 */
+}
+footer>img{
+    width: 300px;
+    height: 50px;
+}
