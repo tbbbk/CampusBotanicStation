@@ -12,6 +12,12 @@ def plant_detail(request, name):
     # 取出相应的植物
     plant = Plant.objects.get(name=name)
     # 需要传递给模板的对象
-    context = { 'plant': plant }
-    return render(request, 'plant_detail.html', context)
+    context = {'plant': plant}
+    return render(request, 'plant/plant_detail.html', context)
 
+
+@login_required
+def plant_category(request):
+    families = Family.objects.all()
+    context = {'families': families}
+    return render(request, 'plant/plant_category.html', context)

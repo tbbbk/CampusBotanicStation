@@ -15,7 +15,7 @@
     <nav>
         <ul class="menu">
             <li><a href="{% url 'index' %}">首页</a></li>
-            <li><a href="html/图鉴.html">植物图鉴</a></li>
+            <li><a href="{% url 'plant:plant_category' %}">植物图鉴</a></li>
             <li>
                 <a href="{% url 'community:article_list' %}">交流互助</a>
             </li>

@@ -3,6 +3,8 @@ from django.db import models
 # Represents a botanical family.
 class Family(models.Model):
     name = models.CharField(max_length=50, primary_key=True)  # Name of the botanical family.
+    introduction = models.CharField(max_length=500, default=None)
+    img_path = models.CharField(max_length=50, default=None)
 
 # Represents a botanical genus, linked to a family.
 class Genus(models.Model):
@@ -16,6 +18,10 @@ class Plant(models.Model):
     location = models.CharField(max_length=50)  # Location where the plant is found.
     introduction = models.TextField(max_length=500)  # Brief introduction about the plant.
     image_path = models.CharField(max_length=50)  # Path to the plant's image.
+    
+    @property
+    def family(self):
+        return self.genus.family.name
 
 # Represents a recommendation for a video.
 class Recommendation(models.Model):

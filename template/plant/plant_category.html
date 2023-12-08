@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>川大校园植物站</title>
+  <link rel="stylesheet" href="/static/css/css01.css">
+  <link rel="stylesheet" href="/static/css/css.css">
+  <link rel="stylesheet" href="/static/font/iconfont.css">
+  <link rel="stylesheet" href="/static/css/search.css">
+
+  <style>
+    .card {
+      position: relative;
+      width: 350px;
+      height: 300px;
+      background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+
+    }
+
+    .card img {
+      width: 100%;
+      /* 使图片宽度与卡片相同 */
+      height: 100%;
+      /* 使图片高度与卡片相同 */
+      object-fit: cover;
+      /* 确保图片覆盖整个区域，可能会裁剪部分内容 */
+      position: absolute;
+      /* 将图片定位到卡片的背景 */
+      top: 0;
+      left: 0;
+    }
+
+    .card svg {
+      width: 48px;
+      fill: #333;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .card:hover {
+      transform: rotate(-5deg) scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card__content {
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: #fff;
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .card:hover .card__content {
+      transform: translate(-50%, -50%) rotate(0deg);
+      opacity: 1;
+    }
+
+    .card__title {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+      font-weight: 700;
+    }
+
+    .card__description {
+      margin: 10px 0 0;
+      font-size: 14px;
+      color: #777;
+      line-height: 1.4;
+    }
+
+    .card:hover svg {
+      scale: 0;
+      transform: rotate(-45deg);
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 200px auto 0;
+      /* 添加 20px 的顶部间距，作为搜索框 */
+      max-width: 1920px;
+      /* 根据卡片尺寸和间距调整 */
+      padding: 0 100px;
+      /* 和屏幕两边保持左右边距 */
+    }
+
+
+
+    .card {
+      margin-bottom: 50px;
+      /* 卡片之间的垂直间距 */
+      flex: 0 0 calc(33.333% - 50px);
+      /* 每行三个卡片，减去间距 */
+    }
+
+    .card__title a {
+      text-decoration: none;
+      /* 移除下划线 */
+      color: inherit;
+      /* 继承父元素的颜色 */
+      transition: color 0.3s;
+      /* 平滑过渡效果 */
+    }
+
+    .card__title a:hover {
+      color: #2cc3dc;
+      /* 鼠标悬停时的颜色 */
+    }
+
+    #cover {
+      position: relative;
+      /* 其他样式... */
+    }
+
+    #searchResults {
+      position: absolute;
+      top: 100%;
+      /* 距离搜索框50px */
+      left: 0;
+      width: 100%;
+    }
+
+    #plantModal {
+      position: fixed;
+      /* 使用固定定位 */
+      top: 50%;
+      /* 居中定位 */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* 位移以确保居中 */
+      display: none;
+      /* 其他样式... */
+    }
+
+    .search-popup {
+      position: fixed;
+      /* 固定定位 */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      /* 半透明背景 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-popup-content {
+      background-color: #f5efef;
+      width: 450px;
+      height: 450px;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!--导航栏-->
+  <nav>
+    <ul class="menu">
+      <li><a href="{% url 'index' %}">首页</a></li>
+      <li><a href="{% url 'plant:plant_category' %}">植物图鉴</a></li>
+      <li><a href="{% url 'community:article_list' %}">交流互助</a> </li>
+      <li><a href="{% url 'community:logout' %}">退出登录</a></li>
+    </ul>
+  </nav>
+
+
+  <!--搜索框-->
+  <div id="cover">
+    <form method="get" action="" onsubmit="event.preventDefault(); searchPlants();">
+      <div class="tb">
+        <div class="td">
+          <!-- Added id attribute to the input field -->
+          <!-- SearchInput就是搜索关键字-->
+          <input type="text" id="searchInput" placeholder="Search" required>
+        </div>
+        <div class="td" id="s-cover">
+          <button type="submit">
+            <div id="s-circle"></div>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </form>
+    <div id="searchResults"></div>
+  </div>
+
+  <!-- 搜索结果 -->
+  <script src="/static/js/search.js"></script>
+
+  <!--11个科目卡片-->
+  <div class="cards-container">
+    {% for family in families %}
+    <div class="card">
+      <img src="/static/images/{{ family.img_path }}" alt="{{ family.name }}">
+      <div class="card__content">
+        <p class="card__title">
+          <a href="elevenfamily/1shancha.html">{{ family.name }}</a>
+        </p>
+        <p class="card__description">
+          {{ family.introduction }}
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="card">
+      <img src="/static/images/chuanda.jpg" alt="chuanda">
+      <div class="card__content">
+        <p class="card__title">未完待续</p>
+        <p class="card__description">更多精彩，等待您的亲自探索</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
