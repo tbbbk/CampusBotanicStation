@@ -25,7 +25,4 @@ class Plant(models.Model):
 
 # Represents a recommendation for a video.
 class Recommendation(models.Model):
-    title = models.CharField(max_length=50)  # Title of the recommendation.
-    cover = models.CharField(max_length=50)  # Cover image for the recommendation.
-    location = models.CharField(max_length=50)  # Location related to the recommendation.
-    introduction = models.TextField(max_length=1000)  # Brief introduction about the recommendation.
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE, default=None)

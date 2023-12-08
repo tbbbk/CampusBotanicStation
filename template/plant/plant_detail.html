@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>荷花</title>
     <link rel="stylesheet" href="/static/css/css.css">
     <link rel="stylesheet" href="/static/css/css03.css">
 </head>
+
 <body>
-<nav>
-    <ul class="menu">
-        <li><a href="{% url 'index' %}">首页</a></li>
-        <li><a href="图鉴.html">植物图鉴</a></li>
-        <li>
-            <a href="">交流互助</a>
-        </li>
-        <li><a href="{% url 'community:logout' %}">退出登录</a></li>
-    </ul>
-</nav>
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">首页</a></li>
+            <li><a href="{% url 'plant:plant_category' %}">植物图鉴</a></li>
+            <li><a href="{% url 'community:article_list' %}">交流互助</a></li>
+            <li><a href="{% url 'community:logout' %}">退出登录</a></li>
+        </ul>
+    </nav>
 
-<div class="img">
-    <img src="/static/images/4.jpg" alt="">
-</div>
-<main>
-    <div class="left">
-        <div class="main">
-            <div class="lr">
-                <p><strong>{{ plant.name }}</p>
-                <p>{{ plant.introduction }}</p>
-                <br>
-                <p>位置：{{ plant.location }}</p>
-        </div>
+    <div class="img">
+        <img src="/static/images/4.jpg" alt="">
     </div>
-    
-</main>
+    <main>
+        <div class="left">
+            <div class="main">
+                <div class="lr">
+                    <p><strong>{{ plant.name }}</p>
+                    <p>{{ plant.introduction }}</p>
+                    <br>
+                    <p>位置：{{ plant.location }}</p>
+                </div>
+            </div>
+
+    </main>
 
 
-<footer>
-    <p>川大校园植物站&copy;第一组</p>
-</footer>
-<script src="/static/js/js03.js"></script>
+    <footer>
+        <p>川大校园植物站&copy;第一组</p>
+    </footer>
+    <script src="/static/js/js03.js"></script>
 </body>
+
 </html>

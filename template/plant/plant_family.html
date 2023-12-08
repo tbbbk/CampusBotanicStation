@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>川大校园植物站</title>
+    <link rel="stylesheet" href="/static/css/plantknowledge.css">
+    <link rel="stylesheet" href="/static/css/css01.css">
+    <link rel="stylesheet" href="/static/css/css.css">
+    <link rel="stylesheet" href="/static/font/iconfont.css">
+    <style>
+        /* You can place additional inline styles here */
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">首页</a></li>
+            <li><a href="{% url 'plant:plant_category' %}">植物图鉴</a></li>
+            <li><a href="{% url 'community:article_list' %}">交流互助</a> </li>
+            <li><a href="{% url 'community:logout' %}">退出登录</a></li>
+        </ul>
+    </nav>
+    <div class="cards-container">
+        {% for plant in plants %}
+        <div class="card">
+            <div class="card-img">
+                <img src="/static/images/{{ plant.image_path }}" alt="{{ plant.name }}图片">
+            </div>
+            <div class="card-title">{{ plant.name }}</div>
+            <div class="card-subtitle">{{ plant.genus.name }}
+            </div>
+            <div class="card-subtitle">
+                {{ plant.introduction }}
+            </div>
+            <hr class="card-divider">
+            <div class="card-footer">
+                <div class="card-position">{{ plant.location }}</div>
+                <button class="toggle-button">Like</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var buttons = document.querySelectorAll(".toggle-button");
+            buttons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    this.classList.toggle("active");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

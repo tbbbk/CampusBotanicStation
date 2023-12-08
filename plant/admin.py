@@ -6,3 +6,4 @@ from .models import *
 admin.site.register(Plant)
 admin.site.register(Genus)
 admin.site.register(Family)  
+admin.site.register(Recommendation)

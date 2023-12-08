@@ -222,7 +222,7 @@
       <img src="/static/images/{{ family.img_path }}" alt="{{ family.name }}">
       <div class="card__content">
         <p class="card__title">
-          <a href="elevenfamily/1shancha.html">{{ family.name }}</a>
+          <a href="{% url 'plant:plant_family' family.name %}">{{ family.name }}</a>
         </p>
         <p class="card__description">
           {{ family.introduction }}
