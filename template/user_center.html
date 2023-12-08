@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>川大校园植物站</title>
+    <link rel="stylesheet" href="/static/css/css01.css">
+    <link rel="stylesheet" href="/static/css/css.css">
+    <link rel="stylesheet" href="/static/font/iconfont.css">
+</head>
+
+<body>
+    <!--导航栏-->
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">首页</a></li>
+            <li><a href="{% url 'plant:plant_category' %}">植物图鉴</a></li>
+            <li><a href="{% url 'community:article_list' %}">交流互助</a></li>
+            <li><a href="{% url 'community:user_center' %}">个人中心</a></li>
+            <li><a href="{% url 'community:logout' %}">退出登录</a></li>
+        </ul>
+    </nav>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label for="title">用户名：</label></td>
+                <td><input type="text" class="form-control" id="title" name="username"
+                        value="{{ current_user.username }}"></td>
+            </tr>
+            <tr>
+                <td><label for="body">电子邮箱：</label></td>
+                <td><input type="text" class="form-control" id="title" name="email" value="{{ current_user.email }}">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="body">个人介绍：</label></td>
+                <td><textarea type="text" class="form-control" id="body" name="introduction"
+                        rows="12">{{ current_user.introduction }}</textarea></td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-primary">修改</button>
+    </form>
+
+    <footer>
+        <p>川大校园植物站&copy;第一组</p>
+    </footer>
+    <script src="/static/js/js03.js"></script>
+    <script src="/static/js/js01.js"></script>
+</body>
+
+</html>

@@ -16,9 +16,8 @@
         <ul class="menu">
             <li><a href="{% url 'index' %}">首页</a></li>
             <li><a href="{% url 'plant:plant_category' %}">植物图鉴</a></li>
-            <li>
-                <a href="{% url 'community:article_list' %}">交流互助</a>
-            </li>
+            <li><a href="{% url 'community:article_list' %}">交流互助</a></li>
+            <li><a href="{% url 'community:user_center' %}">个人中心</a></li>
             <li><a href="{% url 'community:logout' %}">退出登录</a></li>
         </ul>
     </nav>
@@ -47,14 +46,13 @@
         <div class="last">
             <h4>精彩推荐</h4>
             <ul>
-                <li><a href="{% url 'plant:plant_detail' '测试植物' %}" title="蓝花楹" target="_blank"><img
-                            src="/static/images/1.jpg" alt=""></a></li>
-                <li><a href="{% url 'plant:plant_detail' '测试植物' %}" title="海棠" target="_blank"><img
-                            src="/static/images/2.jpg" alt=""></a></li>
-                <li><a href="{% url 'plant:plant_detail' '测试植物' %}" title="荷花" target="_blank"><img
-                            src="/static/images/4.jpg" alt=""></a></li>
-                <li><a href="{% url 'plant:plant_detail' '测试植物' %}" title="银杏" target="_blank"><img
-                            src="/static/images/3.jpg" alt=""></a></li>
+                {% for recommendation in recommendations %}
+                <li>
+                    <a href="{% url 'plant:plant_detail' recommendation.plant_name %}" title="图片">
+                        <img src="/static/images/{{ recommendation.img_path }}" alt="">
+                    </a>
+                </li>
+                {% endfor %}
             </ul>
         </div>
     </main>

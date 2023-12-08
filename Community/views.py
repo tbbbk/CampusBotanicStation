@@ -147,6 +147,24 @@ def post_comment(request, article_id):
         return HttpResponse("发表评论仅接受POST请求。")
 
 
+@login_required
+def user_center(request):
+    if request.method == 'POST':
+        current_username = request.user.username
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        introduction = request.POST.get("introduction")
+        user = User.objects.get(username=current_username)
+        user.username = username
+        user.email = email
+        user.introduction = introduction
+        user.save()
+        return redirect(reverse("community:user_center")) 
+        
+    current_user = request.user
+    context = {'current_user': current_user}
+    return render(request, 'user_center.html', context)
+
 
 def loginORregister(request):
     if request.method == "GET":

@@ -194,12 +194,13 @@
 
   <!--搜索框-->
   <div id="cover">
-    <form method="get" action="" onsubmit="event.preventDefault(); searchPlants();">
+    <form method="post" action="">
+      {% csrf_token %}
       <div class="tb">
         <div class="td">
           <!-- Added id attribute to the input field -->
           <!-- SearchInput就是搜索关键字-->
-          <input type="text" id="searchInput" placeholder="Search" required>
+          <input type="text" id="searchInput" name="search" placeholder="Search" required>
         </div>
         <div class="td" id="s-cover">
           <button type="submit">
@@ -231,6 +232,7 @@
     </div>
     {% endfor %}
 
+    {% if show_explore %}
     <div class="card">
       <img src="/static/images/chuanda.jpg" alt="chuanda">
       <div class="card__content">
@@ -238,6 +240,7 @@
         <p class="card__description">更多精彩，等待您的亲自探索</p>
       </div>
     </div>
+    {% endif %}
   </div>
 </body>
 

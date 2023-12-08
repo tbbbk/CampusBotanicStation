@@ -26,3 +26,11 @@ class Plant(models.Model):
 # Represents a recommendation for a video.
 class Recommendation(models.Model):
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE, default=None)
+    
+    @property
+    def img_path(self):
+        return self.plant.image_path
+    
+    @property
+    def plant_name(self):
+        return self.plant.name

@@ -9,18 +9,16 @@ import pandas as pd
 
 
 @login_required
-def plant_detail(request, name):
-    # 取出相应的植物
-    plant = Plant.objects.get(name=name)
-    # 需要传递给模板的对象
-    context = {'plant': plant}
-    return render(request, 'plant/plant_detail.html', context)
-
-
-@login_required
 def plant_category(request):
+    if request.method == "POST":
+        search = request.POST.get('search')
+        if search:
+            families = Family.objects.filter(Q(name__icontains=search) | Q(introduction__icontains=search))
+        context = {'families': families, 'show_explore': False}
+        return render(request, 'plant/plant_category.html', context)
+    
     families = Family.objects.all()
-    context = {'families': families}
+    context = {'families': families, 'show_explore': True}
     return render(request, 'plant/plant_category.html', context)
 
 
@@ -33,6 +31,12 @@ def plant_family(request, name):
     context = {'plants': plants}
     return render(request, 'plant/plant_family.html', context)
 
+
+@login_required
+def plant_recommendation(request, name):
+    plant = Plant.objects.get(name=name)
+    context = {'plant': plant}
+    return render(request, 'plant/plant_detail.html', context)
 
 # def create_data(request):
 #     data = pd.read_excel('static/data/Plant.xlsx')
@@ -55,4 +59,3 @@ def plant_family(request, name):
 #             image_path=row['image_path']
 #         )
 #         plant.save()
-
