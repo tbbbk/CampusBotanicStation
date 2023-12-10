@@ -8,7 +8,97 @@
     <link rel="stylesheet" href="/static/css/css01.css">
     <link rel="stylesheet" href="/static/css/css.css">
     <link rel="stylesheet" href="/static/font/iconfont.css">
+
 </head>
+<style>
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .form_area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #fff1eb;
+        width: 500px;
+        max-width: 90%;
+        margin: auto;
+        padding: 20px;
+        border: 2px solid #ffecd2;
+        border-radius: 20px;
+        box-shadow: 3px 4px 0px 1px #fddb92;
+    }
+
+    .title {
+        color: #2cc3dc;
+        font-weight: 900;
+        font-size: 1.5em;
+        margin-top: 20px;
+    }
+
+    .sub_title {
+        color: #2cc3dc;
+        font-weight: 600;
+        margin: 5px 0;
+    }
+
+    .form_group {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        margin: 10px;
+    }
+
+    .form_style {
+        width: 400px;
+        margin: 10px auto;
+        outline: none;
+        border: 2px solid #ffecd2;
+        box-shadow: 3px 4px 0px 1px #fddb92;
+        padding: 12px 10px;
+        border-radius: 4px;
+        font-size: 15px;
+    }
+
+    .form_style, .btn {
+        width: 100%;
+        max-width: 450px;
+        margin: 10px 0;
+    }
+
+    .form_style:focus, .btn:focus {
+        transform: translateY(4px);
+        box-shadow: 1px 2px 0px 0px #fddb92;
+    }
+
+    .btn {
+        color: #2cc;
+        padding: 15px;
+        margin: 25px auto;
+        width: 400px;
+        font-size: 18px;
+        border: 2px solid #ffecd2;
+        background: #feada6;
+        border-radius: 10px;
+        font-weight: 800;
+        box-shadow: 3px 3px 0px 0px #fddb92;
+    }
+
+    .btn:hover {
+        opacity: .9;
+    }
+
+    .link {
+        font-weight: 800;
+        color: #32312f8f;
+        padding: 5px;
+    }
+</style>
 
 <body>
     <!--导航栏-->
@@ -22,27 +112,33 @@
         </ul>
     </nav>
 
-    <form method="post" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td><label for="title">用户名：</label></td>
-                <td><input type="text" class="form-control" id="title" name="username"
-                        value="{{ current_user.username }}"></td>
-            </tr>
-            <tr>
-                <td><label for="body">电子邮箱：</label></td>
-                <td><input type="text" class="form-control" id="title" name="email" value="{{ current_user.email }}">
-                </td>
-            </tr>
-            <tr>
-                <td><label for="body">个人介绍：</label></td>
-                <td><textarea type="text" class="form-control" id="body" name="introduction"
-                        rows="12">{{ current_user.introduction }}</textarea></td>
-            </tr>
-        </table>
-        <button type="submit" class="btn btn-primary">修改</button>
-    </form>
+    <div class="container">
+        <div class="form_area">
+            <p class="title">个人管理</p>
+
+            <form method="post" action="">
+                {% csrf_token %}       
+                <div class="form_group">
+                    <label class="sub_title" for="title">用户名：</label>
+                    <input type="text" class="form_style" id="title" name="username" value="{{ current_user.username }}">
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="body">电子邮箱：</label>
+                    <input type="text" class="form_style" id="title" name="email" value="{{ current_user.email }}">
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="body">个人介绍：</label>
+                    <textarea  type="text" class="form_style" id="body" name="introduction" 
+                    rows="12">{{ current_user.introduction }}</textarea>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+  
 
     <footer>
         <p>川大校园植物站&copy;第一组</p>
