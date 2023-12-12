@@ -6,6 +6,7 @@ from .models import *
 # 注册ArticlePost到admin中
 admin.site.register(User)
 admin.site.register(ArticlePost)
+admin.site.register(Comment)
 
 
 

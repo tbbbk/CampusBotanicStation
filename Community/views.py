@@ -23,16 +23,6 @@ def article_list(request):
         # 将 search 参数重置为空
         search = ''
         articles = ArticlePost.objects.all()
-    for article in articles:
-        article.body = markdown.markdown(article.body,
-        extensions=[
-            # 包含 缩写、表格等常用扩展
-            'markdown.extensions.extra',
-            # 语法高亮扩展
-            'markdown.extensions.codehilite',
-            # 目录扩展
-            'markdown.extensions.toc',
-        ])
     # 需要传递给模板（templates）的对象
     context = { 'articles': articles, 'search': search }
     # render函数：载入模板，并返回context对象
@@ -159,7 +149,7 @@ def user_center(request):
         user.email = email
         user.introduction = introduction
         user.save()
-        return redirect(reverse("community:user_center")) 
+        return redirect(reverse("index")) 
         
     current_user = request.user
     context = {'current_user': current_user}
